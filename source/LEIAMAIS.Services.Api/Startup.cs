@@ -7,10 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using LEIAMAIS.Infra.Data.context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace LEIAMAIS.Services.Api
 {
@@ -36,6 +38,11 @@ namespace LEIAMAIS.Services.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
+            // Configuração do banco de dados
+            services.AddDbContext<LEIAMAISContext>(options =>
+            options.UseOracle(Configuration.GetConnectionString("LEIAMAIS"),
+            // parte de compatibilidade & Versão do banco 
+            odb => odb.UseOracleSQLCompatibility("11")));
         }
 
 
