@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Esther\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Esther\\.nuget\\packages"
+    ]
+  }
+}
